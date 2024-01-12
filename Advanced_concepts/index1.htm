@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>chai aur code</title>
+  </head>
+  <body style="background-color: #212121; color: #fff">
+    <div class="parent">
+      <h1>monday</h1>
+      <h1>tuseday</h1>
+      <h1>wensday</h1>
+      <h1>thursday</h1>
+    </div>
+    <!-- <script src="DOM.js"> -->
+    <script>
+      const r = document.querySelector(".parent");
+      console.log(r);
+      console.log(r.children.length);
+      console.log(r.children[1].innerHTML);
+      console.log(r.children);
+      for (let i = 0; i < r.children.length; i++) {
+        console.log(r.children[i].innerHTML);
+      }
+      parent.children[2].style.backgroundColor = "green";
+    </script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body style="background-color: #212121; color: #fff">
+    <ul class="parent"></ul>
+    <script>
+      function newaddition(language) {
+        const li = document.createElement("li");
+        li.innerText = `${language}`; //traversing complete tree
+        document.querySelector(".parent").appendChild(li);
+      }
+      newaddition("python");
+      newaddition("java");
+      // hare is a problem to ad new li we need to traverse
+      //complete tree
+      //-----------------<<<<<<<<<<>>>>>>>-------------//
+      // optimized approach
+      function addOptilanguage(language) {
+        const li = document.createElement("li");
+        const newOne = document.createTextNode(language);
+        li.appendChild(newOne); // direct addition
+        document.querySelector(".parent").appendChild(li);
+      }
+      addOptilanguage("ruby");
+      addOptilanguage("C++");
+      const replace = document.querySelector("li:nth-child(3)");
+      //   console.log(replace.innerText);
+      const rep = document.createElement("li");
+      rep.appendChild(document.createTextNode("pascal"));
+      replace.replaceWith(rep);
+
+      const go = document.querySelector("li:nth-child(1)");
+      const newtwo = document.createElement("li");
+      newtwo.appendChild(document.createTextNode("golang"));
+      go.replaceWith(newtwo);
+      //-------------------<<<<<<<<<<>>>>>>>>---------------//
+      const create = document.querySelector("li:nth-child(4)");
+      create.outerHTML = "<li>Rust</li>";
+      //-------------------<<<<<<<<<<<>>>>>>>--------------//
+
+      const c = document.querySelector("li:first-child");
+      c.remove();
+    </script>
+  </body>
+</html>
