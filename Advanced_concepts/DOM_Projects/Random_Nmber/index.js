@@ -1,5 +1,3 @@
-    const newone=document.querySelector('.upper')
-   console.log(newone.classList.add('button')); 
     let randomNumber= parseInt(Math.random()*100+1);
     const button=document.querySelector('.submit')
     const input=document.querySelector('.input')
@@ -9,7 +7,7 @@
     const startOver=document.querySelector('.resultdiv')
     let PrevGuessArray=[]
     let PlayGame=true;
-    const p  = document.createElement('p')
+    const p=document.createElement('p')
     let numGuess=1;
     if(PlayGame){
     button.addEventListener('click',function(e){
@@ -27,7 +25,7 @@
                 PrevGuessArray.push(guess)
             if (numGuess==11) {
                 displayGuess(guess)
-                displayMessage(`Game is over your randomNumer${randomNumber}` )
+                displayMessage(`Game is over your randomNumer ${randomNumber}` )
                 endGame()
             }
             else {
@@ -52,34 +50,35 @@
     }
     }
     function displayGuess(guess){
-    input.value='';
+    input.value='';// it frees the input field
     preGuess.innerHTML +=`${guess}, `//first time it is 1
     numGuess++;// here becomes two first time
-    Remaining.innerHTML =`${11-numGuess}`// so that is way here is 11
+    Remaining.innerHTML =`${10-numGuess}`// so that is way here is 11
     }
     function displayMessage(message){
       result.innerHTML=`<h2>${message}</h2>`
     }
     function endGame(){
       input.value='';
-      input.setAttribute('disabled','');
-      p.classlist.add('button')
-      p.innerHTML=`<h2 class="newGame">Start Again</h2>`
-      result.appendChild(p)
-      newGame();
+      input.setAttribute('disabled','')
+      p.classList.add('button')
+      p.innerHTML='<h2 class="newGame">Start NewGame</h2>'
+      startOver.appendChild(p)
+      console.log(p)
+      PlayGame=false
 
     }
     function newGame(){
-        const start=document.querySelector('.newGame')
-        start.addEventListener('click',function(e){
-        randomNumber= parseInt(Math.random()*100+1);
-        numGuess=1;
-        PrevGuessArray=[]
-        preGuess.innerHTML='';
-        input.removeAttribute('disabled','')
-        result.removeChild(p)
-        PlayGame=true;
-            
-        })
-
+     const v=document.querySelector('.newGame')
+      v.addEventListener('click', function(e){
+     randomNumber=parseInt(Math.random()*100+1);
+      numGuess=1;
+      PrevGuessArray=[]
+      preGuess.innerHTML=''
+      input.value=''
+      input.removeAttribute('disabled')
+      startOver.removeChild(p)
+      PlayGame=true
+      });// bugg remaining
+      
     }
